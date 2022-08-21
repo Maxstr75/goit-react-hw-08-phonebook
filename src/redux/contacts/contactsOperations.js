@@ -28,36 +28,10 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-// export const fetchContact = () => async dispatch => {
-//   dispatch(actions.fetchContactRequest());
-
-//   try {
-//     const { data } = await axios.get('/contacts');
-//     dispatch(actions.fetchContactSuccess(data));
-//   } catch (error) {
-//     dispatch(actions.fetchContactError(error));
-//   }
-// };
-
-// export const addContact = contact => async dispatch => {
-//   dispatch(actions.addContactRequest());
-
-//   try {
-//     const { data } = await axios.post('/contacts', contact);
-
-//     dispatch(actions.addContactSuccess(data));
-//   } catch (error) {
-//     dispatch(actions.addContactError(error));
-//   }
-// };
-
-// export const deleteContact = id => async dispatch => {
-//   dispatch(actions.deleteContactRequest());
-
-//   try {
-//     await axios.delete(`/contacts/${id}`);
-//     dispatch(actions.deleteContactSuccess(id));
-//   } catch (error) {
-//     dispatch(actions.deleteContactError(error));
-//   }
-// };
+export const updateContact = createAsyncThunk(
+  'contacts/updateContact',
+  async ({ id, number, name }) => {
+    const { data } = await axios.patch(`/contacts/${id}`, { number, name });
+    return data;
+  }
+);
