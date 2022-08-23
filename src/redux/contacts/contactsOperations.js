@@ -6,32 +6,50 @@ axios.defaults.baseURL = 'https://62fab1f63c4f110faa9e3a1c.mockapi.io/';
 
 export const fetchContact = createAsyncThunk(
   'contacts/fetchContact',
-  async () => {
-    const { data } = await axios.get('/contacts');
-    return data;
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get('/contacts');
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async contact => {
-    const { data } = await axios.post('/contacts', contact);
-    return data;
+  async (contact, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/contacts', contact);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async id => {
-    await axios.delete(`/contacts/${id}`);
-    return id;
+  async (id, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/contacts/${id}`);
+      return id;
+    } catch (error) {
+      console.log(rejectWithValue(error));
+      return rejectWithValue(error);
+    }
   }
 );
 
 export const updateContact = createAsyncThunk(
   'contacts/updateContact',
-  async ({ id, number, name }) => {
-    const { data } = await axios.patch(`/contacts/${id}`, { number, name });
-    return data;
+  async ({ id, number, name }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`/contacts/${id}`, { number, name });
+      return data;
+    } catch (error) {
+      console.log(rejectWithValue(error));
+      return rejectWithValue(error);
+    }
   }
 );
