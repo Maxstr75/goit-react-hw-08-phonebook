@@ -1,17 +1,17 @@
-import { contactReducers } from './contacts/contactsReducers';
 import { configureStore } from '@reduxjs/toolkit';
-
+import { contactReducers } from './contacts/contactsReducers';
 import {
-  // persistStore,
-  // persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
+  // persistReducer,
+  // persistStore,
   PURGE,
   REGISTER,
+  REHYDRATE,
 } from 'redux-persist';
 // import storage from 'redux-persist/lib/storage';
+// import authSlice from './auth/authSlice';
 
 // const persistConfig = {
 //   key: 'contacts',
@@ -22,8 +22,15 @@ import {
 
 // const persistedReducer = persistReducer(persistConfig, contactReducers);
 
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
+
 export const store = configureStore({
   reducer: {
+    // auth: persistReducer(authPersistConfig, authSlice),
     contacts: contactReducers,
   },
   // Чтобы избежать ошибок сериализации, промежуточное ПО настроено на игнорирование действий redux-persist:
