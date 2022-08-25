@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getItemsValueState } from 'redux/contacts/contactsSelectors';
 import * as operations from 'redux/contacts/contactsOperations';
 import { Button, Form, Input, Label } from './ContactForm.styled';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const contacts = useSelector(getItemsValueState);
   const dispatch = useDispatch();
 
@@ -19,27 +20,27 @@ const ContactForm = () => {
         setName(value);
         break;
 
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
 
       default:
-        break;
+        return;
     }
   };
 
-  const addContacts = ({ name, phone }) => {
+  const addContacts = ({ name, number }) => {
     const findName = contacts.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     if (findName) {
-      return alert(`${name} is already in contacts.`);
+      Notify.failure(`${name} is already in contacts.`);
     }
-    const findPhone = contacts.find(contact => contact.phone === phone);
-    if (findPhone) {
-      return alert(`${phone} number is already in use.`);
+    const findNumber = contacts.find(contact => contact.number === number);
+    if (findNumber) {
+      Notify.failure(`${number} number is already in use.`);
     } else {
-      return dispatch(operations.addContact({ name, phone }));
+      return dispatch(operations.addContact({ name, number }));
     }
   };
 
@@ -47,12 +48,12 @@ const ContactForm = () => {
     event.preventDefault();
     reset();
 
-    return addContacts({ name, phone });
+    return addContacts({ name, number });
   };
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -71,11 +72,11 @@ const ContactForm = () => {
       </Label>
 
       <Label>
-        Phone
+        Number
         <Input
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"

@@ -37,12 +37,12 @@ const ContactList = () => {
   return (
     <List>
       {visibleContacts &&
-        visibleContacts.map(({ id, name, phone }) => (
+        visibleContacts.map(({ id, name, number }) => (
           <ContactItem
             key={id}
             id={id}
             name={name}
-            phone={phone}
+            number={number}
             onDeleteContacts={deleteContacts}
           />
         ))}

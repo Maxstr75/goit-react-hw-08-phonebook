@@ -4,24 +4,24 @@ import {
   FLUSH,
   PAUSE,
   PERSIST,
-  // persistReducer,
-  // persistStore,
+  persistReducer,
+  persistStore,
   PURGE,
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import authSlice from './auth/authSlice';
+import storage from 'redux-persist/lib/storage';
+import authSlice from './auth/authSlice';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['token'],
+};
 
 export const store = configureStore({
   reducer: {
-    // auth: persistReducer(authPersistConfig, authSlice),
+    auth: persistReducer(authPersistConfig, authSlice),
     contacts: contactReducers,
   },
   // Чтобы избежать ошибок сериализации, промежуточное ПО настроено на игнорирование действий redux-persist:
@@ -34,4 +34,4 @@ export const store = configureStore({
   },
 });
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
