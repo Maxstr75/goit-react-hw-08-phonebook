@@ -10,4 +10,11 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 200px;
   margin-top: 5px;
+  outline: none;
+  height: 15px;
+  padding: 2.5px;
+  &:hover,
+  &:focus {
+    border-color: #008080;
+  }
 `;
