@@ -1,0 +1,17 @@
+import styled from '@emotion/styled';
+
+export const Rotate = styled.loader`
+  animation: rotation 1s infinite linear;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+}`;

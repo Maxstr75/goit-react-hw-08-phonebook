@@ -15,6 +15,6 @@ export const Input = styled.input`
   padding: 2.5px;
   &:hover,
   &:focus {
-    border-color: #008080;
+    border-color: #4b0082;
   }
 `;
