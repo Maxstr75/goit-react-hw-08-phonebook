@@ -1,20 +1,72 @@
-import ContactForm from 'components/ContactForm/ContactForm';
-import ContactList from 'components/ContactList/ContactList';
-import Filter from 'components/Filter/Filter';
-import { Container, Section, TitleH1, TitleH2 } from './App.styled';
+import { Container, Section } from './App.styled';
+import PhonebookAppBar from './PhonebookAppBar';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, Suspense, useEffect } from 'react';
+import authOperations from 'redux/auth/authOperations';
+import Loader from './Loader';
+import authSelectors from 'redux/auth/authSelectors';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
+const HomePage = lazy(() => import('../pages/HomePage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
+
+Notify.init({
+  width: '300px',
+  position: 'right-bottom',
+  closeButton: false,
+  clickToClose: true,
+  timeout: 2000,
+});
 
 export function App() {
-  return (
-    <Container>
-      <Section title="Phonebook">
-        <TitleH1>Phonebook</TitleH1>
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <TitleH2>Contacts</TitleH2>
-        <Filter />
-        <ContactList />
-      </Section>
-    </Container>
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser
+  );
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
+  return !isFetchingCurrentUser ? (
+    <Suspense fallback={<Loader />}>
+      <Container>
+        <PhonebookAppBar />
+        <Section>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/contacts"
+              element={
+                // <PrivateRoute redirectTo="/login">
+                <ContactsPage />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                // <PublicRoute restricted redirectTo="/contacts">
+                <LoginPage />
+                // </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                // <PublicRoute restricted redirectTo="/contacts">
+                <RegisterPage />
+                // </PublicRoute>
+              }
+            />
+            <Route path="*" element={<Navigate to="/contacts" />} />
+          </Routes>
+        </Section>
+      </Container>
+    </Suspense>
+  ) : (
+    <Loader />
   );
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { LogoReact } from '../HomePage/logoReact.svg';
+import { ReactComponent as LogoReact } from '../HomePage/logoReact.svg';
 import { Rotate } from './HomePage.styled';
 
 const HomePage = () => {
