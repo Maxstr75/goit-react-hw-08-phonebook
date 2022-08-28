@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItemsValueState } from 'redux/contacts/contactsSelectors';
 import * as operations from 'redux/contacts/contactsOperations';
-import { Button, Form, Input, Label } from './ContactForm.styled';
+import { Button, Box, TextField } from '@mui/material';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const ContactForm = () => {
@@ -57,34 +57,44 @@ const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} autoComplete="on">
-      <Label>
-        Name
-        <Input
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '15px',
+        }}
+      >
+        <TextField
           type="text"
           name="name"
-          value={name}
-          onChange={handleChange}
+          label="Name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
+          onChange={handleChange}
+          value={name}
+          variant="outlined"
+          autoComplete="off"
         />
-      </Label>
-
-      <Label>
-        Number
-        <Input
+        <TextField
           type="tel"
           name="number"
-          value={number}
+          label="Number"
           onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
+          // pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+          title="The phone number must be 13 digits long and may contain numbers, spaces, dashes, paunches, and may begin with +"
+          value={number}
+          variant="outlined"
+          sx={{ mb: 2, mt: 2 }}
+          autoComplete="off"
         />
-      </Label>
-      <Button type="submit">Add contact</Button>
-    </Form>
+        <Button type="submit" variant="contained">
+          Add contact
+        </Button>
+      </Box>
+    </>
   );
 };
 

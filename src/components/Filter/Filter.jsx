@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFilterValueState } from 'redux/contacts/contactsSelectors';
-import { Input, Label } from './Filter.styled';
+// import { Input, Label } from './Filter.styled';
 import * as actions from '../../redux/contacts/contactsActions';
+import TextField from '@mui/material/TextField';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -13,10 +14,20 @@ const Filter = () => {
   };
 
   return (
-    <Label>
-      Find contacts by name
-      <Input type="text" name="filter" value={filter} onChange={handleFilter} />
-    </Label>
+    <>
+      <TextField
+        variant="outlined"
+        type="text"
+        name="filter"
+        label="Find contacts by name"
+        value={filter}
+        onChange={handleFilter}
+        sx={{
+          mb: 2,
+          mt: 2,
+        }}
+      />
+    </>
   );
 };
 

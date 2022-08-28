@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import ContactItem from 'components/ContactItem/ContactItem';
-import { List } from './ContactList.styled';
+// import { List } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getItemsValueState,
@@ -8,6 +8,7 @@ import {
 } from 'redux/contacts/contactsSelectors';
 import * as operations from 'redux/contacts/contactsOperations';
 import { useEffect } from 'react';
+import Stack from '@mui/material/Stack';
 
 const ContactList = () => {
   const contacts = useSelector(getItemsValueState);
@@ -35,7 +36,7 @@ const ContactList = () => {
   const visibleContacts = filterContacts();
 
   return (
-    <List>
+    <Stack component="ul" sx={{ padding: 0 }} spacing={1}>
       {visibleContacts &&
         visibleContacts.map(({ id, name, number }) => (
           <ContactItem
@@ -46,7 +47,7 @@ const ContactList = () => {
             onDeleteContacts={deleteContacts}
           />
         ))}
-    </List>
+    </Stack>
   );
 };
 
