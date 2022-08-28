@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoReact } from '../HomePage/logoReact.svg';
-import {
-  Box,
-  // Button,
-  // Typography
-} from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 
 // import { Rotate } from './HomePage.styled';
 
@@ -27,16 +23,51 @@ const HomePage = () => {
           wrapperStyle={{
             width: '100%',
             animation: 'rotation 30s infinite linear',
-            transform: 'rotate(0deg, 359deg)',
+            rotation: 'rotate(0deg, 359deg)',
           }}
         />
       </Box>
 
-      <div>Contacts phonebook from the React APP</div>
-      <div>Let's go!</div>
-      <button type="submit" onClick={() => navigate('/login')}>
-        Try to now
-      </button>
+      <Typography
+        variant="h6"
+        component="h2"
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          display: 'flex',
+          textAlign: 'center',
+        }}
+      >
+        Contacts phonebook from the React APP
+      </Typography>
+      <Typography
+        variant="h6"
+        component="h2"
+        sx={{
+          mt: 2,
+          mb: 2,
+          alignItems: 'center',
+          justifyContent: 'center',
+          display: 'flex',
+        }}
+      >
+        Let's go!
+      </Typography>
+
+      <Button
+        onClick={() => navigate('/login')}
+        variant="contained"
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        Try it now
+      </Button>
     </>
   );
 };
