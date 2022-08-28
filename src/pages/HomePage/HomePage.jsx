@@ -20,10 +20,10 @@ const HomePage = () => {
           title="LogoReact"
           alt="LogoReact"
           fill="#836bf2"
-          wrapperStyle={{
+          style={{
             width: '100%',
             animation: 'rotation 30s infinite linear',
-            rotation: 'rotate(0deg, 359deg)',
+            transform: 'rotate(0deg, 359deg)',
           }}
         />
       </Box>
