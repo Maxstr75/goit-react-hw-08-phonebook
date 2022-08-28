@@ -32,6 +32,8 @@ const HomePage = () => {
         variant="h6"
         component="h2"
         sx={{
+          mt: 3,
+          mb: 3,
           alignItems: 'center',
           justifyContent: 'center',
           display: 'flex',
@@ -44,8 +46,8 @@ const HomePage = () => {
         variant="h6"
         component="h2"
         sx={{
-          mt: 2,
-          mb: 2,
+          mt: 1,
+          mb: 1,
           alignItems: 'center',
           justifyContent: 'center',
           display: 'flex',
