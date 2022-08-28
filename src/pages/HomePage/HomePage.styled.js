@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Rotate = styled.logo`
+export const Rotate = styled.div`
   animation: rotation 30s infinite linear;
   width: 100%;
 }

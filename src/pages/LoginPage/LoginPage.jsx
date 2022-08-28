@@ -6,7 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useDispatch('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ currentTarget: { name, value } }) => {

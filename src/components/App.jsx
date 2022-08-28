@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
 import authOperations from 'redux/auth/authOperations';
 import Loader from './Loader';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 import authSelectors from 'redux/auth/authSelectors';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -40,25 +42,25 @@ export function App() {
             <Route
               path="/contacts"
               element={
-                // <PrivateRoute redirectTo="/login">
-                <ContactsPage />
-                // </PrivateRoute>
+                <PrivateRoute redirectTo="/login">
+                  <ContactsPage />
+                </PrivateRoute>
               }
             />
             <Route
               path="/login"
               element={
-                // <PublicRoute restricted redirectTo="/contacts">
-                <LoginPage />
-                // </PublicRoute>
+                <PublicRoute restricted redirectTo="/contacts">
+                  <LoginPage />
+                </PublicRoute>
               }
             />
             <Route
               path="/register"
               element={
-                // <PublicRoute restricted redirectTo="/contacts">
-                <RegisterPage />
-                // </PublicRoute>
+                <PublicRoute restricted redirectTo="/contacts">
+                  <RegisterPage />
+                </PublicRoute>
               }
             />
             <Route path="*" element={<Navigate to="/contacts" />} />
