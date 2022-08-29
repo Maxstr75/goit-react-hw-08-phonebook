@@ -36,7 +36,7 @@ const ContactList = () => {
   const visibleContacts = filterContacts();
 
   return (
-    <Stack component="ul" sx={{ padding: 0 }} spacing={1}>
+    <Stack component="ul" sx={{ padding: 0 }} spacing={2}>
       {visibleContacts &&
         visibleContacts.map(({ id, name, number }) => (
           <ContactItem
