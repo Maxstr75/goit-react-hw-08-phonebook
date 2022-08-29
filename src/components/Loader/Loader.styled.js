@@ -7,8 +7,7 @@ export const Rotate = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-
-@keyframes rotation {
+  @keyframes rotation {
   from {
     transform: rotate(0deg);
   }
