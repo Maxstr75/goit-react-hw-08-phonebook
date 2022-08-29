@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as LogoReact } from '../HomePage/logoReact.svg';
+import { ReactComponent as LogoReact } from '../HomePage/Redux.svg';
 import { Box, Button, Typography } from '@mui/material';
 
 // import { Rotate } from './HomePage.styled';
@@ -22,8 +22,8 @@ const HomePage = () => {
           fill="#836bf2"
           style={{
             width: '100%',
-            animation: 'rotation 30s infinite linear',
-            transform: 'rotate(0deg, 359deg)',
+            animation: 'rotation 10s infinite linear',
+            transform: 'rotate(0deg, 360deg)',
           }}
         />
       </Box>
