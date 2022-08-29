@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 import { Link } from 'react-router-dom';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { TextField, Box, Button } from '@mui/material';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
