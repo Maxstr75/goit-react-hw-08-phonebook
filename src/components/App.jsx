@@ -37,7 +37,7 @@ export function App() {
     <Suspense fallback={<Loader />}>
       <Container>
         <PhonebookAppBar />
-        <Paper elevation={5}>
+        <Paper elevation={3}>
           <Section>
             <Routes>
               <Route path="/" element={<HomePage />} />
