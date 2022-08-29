@@ -8,8 +8,6 @@ const Loader = () => {
         display: 'flex',
         color: '#0000FF',
         justifyContent: 'center',
-        animation: 'rotation 1s infinite linear',
-        transform: 'rotate(0deg, 360deg)',
       }}
     >
       <FiLoader size="30px" />
