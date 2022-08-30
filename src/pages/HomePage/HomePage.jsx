@@ -23,10 +23,6 @@ const HomePage = () => {
               title="LogoReact"
               alt="LogoReact"
               fill="#836bf2"
-              style={{
-                animation: 'rotation 30s infinite linear',
-                transform: 'rotate(0deg, 360deg)',
-              }}
             />
           </Logo>
         </Container>

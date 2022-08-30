@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Logo = styled.section`
-  animation: rotation 30s infinite linear;
+  animation: rotation 15s infinite linear;
   width: 100%;
 
   @keyframes rotation {
