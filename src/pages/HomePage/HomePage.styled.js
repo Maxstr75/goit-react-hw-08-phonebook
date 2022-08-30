@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
 
-export const Rotate = styled.div`
+export const Logo = styled.section`
   animation: rotation 30s infinite linear;
   width: 100%;
+
   @keyframes rotation {
     from {
       transform: rotate(0deg);

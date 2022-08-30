@@ -2,7 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as LogoReact } from '../HomePage/Redux.svg';
 import { Box, Button, Typography } from '@mui/material';
 
-// import { Rotate } from './HomePage.styled';
+import { Logo } from './HomePage.styled';
+import { Container } from 'react-bootstrap';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -15,17 +16,20 @@ const HomePage = () => {
           justifyContent: 'center',
         }}
       >
-        <LogoReact
-          height="100"
-          title="LogoReact"
-          alt="LogoReact"
-          fill="#836bf2"
-          style={{
-            width: '100%',
-            animation: 'rotation 10s infinite linear',
-            transform: 'rotate(0deg, 360deg)',
-          }}
-        />
+        <Container>
+          <Logo>
+            <LogoReact
+              height="100"
+              title="LogoReact"
+              alt="LogoReact"
+              fill="#836bf2"
+              style={{
+                animation: 'rotation 30s infinite linear',
+                transform: 'rotate(0deg, 360deg)',
+              }}
+            />
+          </Logo>
+        </Container>
       </Box>
 
       <Typography
