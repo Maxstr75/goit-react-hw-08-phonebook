@@ -18,12 +18,7 @@ const HomePage = () => {
       >
         <Container>
           <Logo>
-            <LogoReact
-              height="100"
-              title="LogoReact"
-              alt="LogoReact"
-              fill="#836bf2"
-            />
+            <LogoReact height="100" />
           </Logo>
         </Container>
       </Box>
