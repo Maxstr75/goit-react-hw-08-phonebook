@@ -34,7 +34,7 @@ export function App() {
   }, [dispatch]);
 
   return !isFetchingCurrentUser ? (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<p>Loading...</p>}>
       <Container>
         <PhonebookAppBar />
         <Paper elevation={3}>
